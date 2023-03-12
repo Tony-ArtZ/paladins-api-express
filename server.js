@@ -1,12 +1,8 @@
-import fetch from 'node-fetch'
-import createSignature from './utils/createSignature.js'
 import express from 'express'
-import config from './config.js'
-import moment from 'moment/moment.js'
-const respone = await fetch(`https://api.paladins.com/paladinsapi.svc/createSessionJson/${config.devId}/${createSignature('createsession')}/${moment.utc().format("yyyyMMddHHmmss")}`);
-const data = await respone.json()
+import createSession from './utils/paladinsApiFetcher.js'
 
-console.log(data)
+const sessionId = createSession()
+console.log(sessionId)
 
 const app = express()
 
