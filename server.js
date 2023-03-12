@@ -1,9 +1,10 @@
 import express from 'express'
-import createSession from './utils/paladinsApiFetcher.js'
+import {createSession, getPlayer} from './utils/paladinsApiFetcher.js'
 
-const sessionId = createSession()
-console.log(sessionId)
+const sessionId =  await createSession()
+const playerInfo = await getPlayer(sessionId, 'TonyArtZ')
 
+console.log(playerInfo)
 const app = express()
 
 app.listen(3000)
