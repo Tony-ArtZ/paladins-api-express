@@ -1,7 +1,7 @@
 import express from 'express'
 import {createSession, getPlayer} from './utils/paladinsApiFetcher.js'
 
-const app = express()
+const app = express()  
 
 app.get('/player/:name', async (req, res)=>{
     const sessionId =  await createSession()
