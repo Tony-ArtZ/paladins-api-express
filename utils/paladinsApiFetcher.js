@@ -16,4 +16,17 @@ const getPlayer = async (sessionId, playerName) => {
     return (data)
 }
 
-export {createSession, getPlayer}
+const getMatchDetails = async (sessionId, matchId) => {
+    const response = await fetch(`https://api.paladins.com/paladinsapi.svc/getmatchdetailsjson/${config.devId}/${createSignature('getmatchdetails')}/${sessionId}/${moment().utc().format("YYYYMMDDHHmmss")}/${matchId}`);
+    const data = await response.json().then()
+    console.log(data)
+    return (data)
+}
+const getMatchHistory = async (sessionId, playerName) => {
+    const response = await fetch(`https://api.paladins.com/paladinsapi.svc/getmatchhistoryjson/${config.devId}/${createSignature('getmatchhistory')}/${sessionId}/${moment().utc().format("YYYYMMDDHHmmss")}/${playerName.name}`);
+    const data = await response.json().then()
+    console.log(data)
+    return (data)
+}
+
+export {createSession, getPlayer, getMatchHistory, getMatchDetails}
