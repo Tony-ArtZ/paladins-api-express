@@ -92,5 +92,19 @@ const getMatchHistory = async (sessionId, playerName) => {
   console.log(data)
   return data
 }
+const getMatchPlayerDetails = async (sessionId, matchId) => {
+  const response = await fetch(
+    `https://api.paladins.com/paladinsapi.svc/getmatchplayerdetailsjson/${
+      config.devId
+    }/${createSignature(
+      'getmatchhistory',
+    )}/${sessionId}/${moment().utc().format('YYYYMMDDHHmmss')}/${
+      matchId
+    }`,
+  )
+  const data = await response.json().then()
+  console.log(data)
+  return data
+}
 
-export { createSession, getPlayer, getMatchHistory, getMatchDetails, getPlayerStatus, getPlayerID, getGodRank}
+export { createSession, getPlayer, getMatchHistory, getMatchDetails, getPlayerStatus, getPlayerID, getGodRank, getMatchPlayerDetails}
