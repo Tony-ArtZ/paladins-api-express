@@ -1,11 +1,15 @@
-import md5 from 'md5'
-import config from '../config.js'
-import moment from 'moment/moment.js'
+import md5 from "md5";
+import "dotenv/config";
+import moment from "moment/moment.js";
 
-const createSignature = (methodName)=>{
-    const signatureBase = config.devId + methodName + config.authKey + moment().utc().format("YYYYMMDDHHmmss")
-    const signature = md5(signatureBase)
-    return signature
-}
+const createSignature = (methodName) => {
+  const signatureBase =
+    process.env.devId +
+    methodName +
+    process.env.authKey +
+    moment().utc().format("YYYYMMDDHHmmss");
+  const signature = md5(signatureBase);
+  return signature;
+};
 
-export default createSignature
+export default createSignature;
